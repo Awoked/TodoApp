@@ -8,10 +8,21 @@ const useTodo = () => {
     const { todoData, setTodoData } = useContext(TodoContext);
 
     useEffect(() => {
-    }, [])
+        console.log(todoData);
+    }, [todoData])
+
+    const add = (data) => {
+        setTodoData([...todoData, data])
+    }
+
+    const remove = (id) =>{
+        setTodoData(todoData.filter(data => data.id === id))
+    }
 
     return {
-        todoData
+        todoData,
+        add,
+        remove
     }
 }
 

@@ -4,7 +4,12 @@ import React, { createContext, useContext, useState } from 'react'
 const TodoContext = createContext(null);
 
 const TodoContextProvider = ({ children }) => {
-    const [todoData, setTodoData] = useState([]);
+    const [todoData, setTodoData] = useState([
+        {
+            id: 1,
+            content: "Yapılacak liste içeriği"
+        }
+    ]);
 
 
     return (

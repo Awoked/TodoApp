@@ -1,8 +1,23 @@
-import React from 'react'
+import useTodo from '@/hooks/useTodo';
+import React, { useState } from 'react'
 
 import { BsPlus } from "react-icons/bs";
 
-const TodoList = ({ status, todosData }) => {
+const TodoList = ({ status }) => {
+
+  const { todoData, add: addTodo } = useTodo();
+
+  const [todoText, setTodoText] = useState("");
+
+  const addTodoHandler = (e) => {
+    e.preventDefault();
+    addTodo({
+      id: 2,
+      content: todoText
+    })
+
+  }
+
   return (
     <>
       <div className="border rounded-md p-4 flex flex-col gap-y-4">
@@ -21,13 +36,14 @@ const TodoList = ({ status, todosData }) => {
 
         {
           status === "todo" &&
-          <form>
+          <form onSubmit={addTodoHandler}>
             <div className="flex rounded-md overflow-hidden">
 
               <input
                 type="text"
                 className="flex-1 text-gray-800 px-4"
                 placeholder="Listeye ekle"
+                onChange={e => setTodoText(e.target.value)}
               />
               <button className="p-3 py-1.5 bg-green-500">
                 <BsPlus
