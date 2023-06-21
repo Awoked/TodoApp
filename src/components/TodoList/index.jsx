@@ -5,7 +5,7 @@ import { BsPlus } from "react-icons/bs";
 
 const TodoList = ({ status }) => {
 
-  const { todoData, add: addTodo } = useTodo();
+  const { data: todoData, add: addTodo } = useTodo();
 
   const [todoText, setTodoText] = useState("");
 
@@ -56,9 +56,14 @@ const TodoList = ({ status }) => {
         }
 
         <ul className="flex flex-col gap-y-4">
-          <li>
-            ---
-          </li>
+          {
+            todoData &&
+            todoData.map((data, index) => (
+              <li key={index}>
+                {data.content}
+              </li>
+            ))
+          }
         </ul>
       </div>
     </>

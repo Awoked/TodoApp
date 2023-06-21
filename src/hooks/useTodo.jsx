@@ -5,22 +5,22 @@ import { TodoContext } from '@/context/TodoContext'
 
 const useTodo = () => {
 
-    const { todoData, setTodoData } = useContext(TodoContext);
+    const { data, setData } = useContext(TodoContext);
 
     useEffect(() => {
-        console.log(todoData);
-    }, [todoData])
+        console.log(data);
+    }, [data])
 
     const add = (data) => {
-        setTodoData([...todoData, data])
+        setData([...data, data])
     }
 
     const remove = (id) =>{
-        setTodoData(todoData.filter(data => data.id === id))
+        setData(data.filter(data => data.id === id))
     }
 
     return {
-        todoData,
+        data,
         add,
         remove
     }
