@@ -7,22 +7,22 @@ const useTodo = () => {
 
     const { data, setData } = useContext(TodoContext);
 
-    useEffect(() => {
-        console.log(data);
-    }, [data])
-
     const add = (data) => {
-        setData([...data, data])
+
+        setData(data)
+        localStorage.setItem("todoData", JSON.stringify(data))
     }
 
-    const remove = (id) =>{
-        setData(data.filter(data => data.id === id))
+    const remove = (id) => {
+        setData(data.filter(data => data.id !== id))
+        localStorage.setItem("todoData", data.filter(data => data.id !== id))
     }
+
 
     return {
         data,
         add,
-        remove
+        remove,
     }
 }
 
