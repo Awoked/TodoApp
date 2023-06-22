@@ -66,7 +66,7 @@ const TodoList = ({ status }) => {
                 onChange={e => setTodoText(e.target.value)}
                 value={todoText}
               />
-              <button className="p-3 py-1.5 bg-green-500">
+              <button className="flex items-center justify-center py-1.5 w-12 h-8 bg-green-500">
                 <BsPlus
                   size={28}
                 />
